@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
+import './css/App.css';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate, useLocation } from 'react-router-dom';
 import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -19,41 +20,52 @@ function App() {
     setIsAuthenticated(false);
   };
 
-  return(
-  <Router>
-    <div className='App'>
+  const location = useLocation();
+
+  return (
+    <div className="App">
       <nav>
         <ul>
-          {isAuthenticated ?(
+          {!isAuthenticated ? (
             <>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <button onClick={handleLogout}>Logout</button>
-            </li>
+              {location.pathname !== '/login' && location.pathname !== '/register' && (
+                <>
+                  <li>
+                    <Link to="/register">Register</Link>
+                  </li>
+                  <li>
+                    <Link to="/login">Login</Link>
+                  </li>
+                </>
+              )}
             </>
           ) : (
             <>
-              <li>
-                  <Link to="/register">Register</Link>
-                </li>
+              {location.pathname !== '/dashboard' && (
                 <li>
-                  <Link to="/login">Login</Link>
+                  <Link to="/dashboard">Dashboard</Link>
                 </li>
+              )}
+              <li>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
             </>
-          )
-          }
+          )}
         </ul>
       </nav>
       <Routes>
-          <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/dashboard"/>} />
-          <Route path="/login" element={!isAuthenticated ? <Login onLogin={() => setIsAuthenticated(true)} /> : <Navigate to="/dashboard" />} />
-          <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
-        </Routes>
+        <Route path="/register" element={!isAuthenticated ? <Register /> : <Navigate to="/dashboard" />} />
+        <Route path="/login" element={!isAuthenticated ? <Login onLogin={() => setIsAuthenticated(true)} /> : <Navigate to="/dashboard" />} />
+        <Route path="/dashboard" element={isAuthenticated ? <Dashboard /> : <Navigate to="/login" />} />
+      </Routes>
     </div>
-  </Router>
   );
 }
 
-export default App;
+export default function AppWrapper() {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+}

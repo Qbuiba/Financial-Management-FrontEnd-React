@@ -40,7 +40,6 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <div className="dashboard-box">
-        <h2>Dashboard</h2>
         <div className="dashboard-section">
           <h3>Total Balance</h3>
           <p className="amount">${totalBalance}</p>

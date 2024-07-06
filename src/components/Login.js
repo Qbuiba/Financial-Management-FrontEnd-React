@@ -1,6 +1,8 @@
 //Login.js
 import React, {useState} from 'react';
+import { Link } from 'react-router-dom';
 import authService from '../services/authService';
+import PropTypes from 'prop-types';
 import '../css/Auth.css';
 
 function Login({onLogin}){
@@ -40,10 +42,17 @@ function Login({onLogin}){
             />
             <button type="submit">Login</button>
           </form>
-          {message && <p>{message}</p>}
+          {message && <p className="error-message">{message}</p>}
+          <p className="info-message">
+            If you don't have an account, <Link to="/register">register here</Link>.
+          </p>
         </div>
       </div>
     );
     }
 
-export default Login;
+    Login.propTypes = {
+      onLogin: PropTypes.func.isRequired,
+    };
+    
+    export default Login;
