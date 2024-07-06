@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import '../css/Dashboard.css';
 
 function Dashboard() {
   const [totalBalance, setTotalBalance] = useState(0);
@@ -37,25 +38,38 @@ function Dashboard() {
   }, []);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <h2>Total Balance: ${totalBalance}</h2>
-      <h3>Recent Transactions</h3>
-      <ul>
-        {recentTransactions.map((transaction) => (
-          <li key={transaction._id}>
-            {new Date(transaction.date).toLocaleDateString()} - {transaction.description}: ${transaction.amount}
-          </li>
-        ))}
-      </ul>
-      <h3>Upcoming Bills</h3>
-      <ul>
-        {upcomingBills.map((bill) => (
-          <li key={bill._id}>
-            {new Date(bill.dueDate).toLocaleDateString()} - {bill.description}: ${bill.amount}
-          </li>
-        ))}
-      </ul>
+    <div className="dashboard-container">
+      <div className="dashboard-box">
+        <h2>Dashboard</h2>
+        <div className="dashboard-section">
+          <h3>Total Balance</h3>
+          <p className="amount">${totalBalance}</p>
+        </div>
+        <div className="dashboard-section">
+          <h3>Recent Transactions</h3>
+          <ul>
+            {recentTransactions.map((transaction) => (
+              <li key={transaction._id}>
+                <span className="description">{transaction.description}</span>
+                <span className="date">{new Date(transaction.date).toLocaleDateString()}</span>
+                <span className="amount">${transaction.amount}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="dashboard-section">
+          <h3>Upcoming Bills</h3>
+          <ul>
+            {upcomingBills.map((bill) => (
+              <li key={bill._id}>
+                <span className="description">{bill.description}</span>
+                <span className="date">{new Date(bill.dueDate).toLocaleDateString()}</span>
+                <span className="amount">${bill.amount}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }
