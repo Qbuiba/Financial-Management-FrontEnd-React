@@ -1,6 +1,7 @@
 //Register.js
 import React, {useState} from 'react';
 import authService from '../services/authService';
+import '../Auth.css';
 
 function Register(){
     const [username, setUsername] = useState('');
@@ -20,22 +21,29 @@ function Register(){
     }
   };
 
-    return (
-        <div>
-            <form onSubmit={handleRegister}>
-            <div>
-                <label>Username</label>
-                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
-            </div>
-            <div>
-                <label>Password</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-            </div>
-            <button type="submit">Register</button>
-            </form>
-            {message && <p>{message}</p>}
-        </div>
-      );
+  return (
+    <div className="auth-container">
+      <div className="auth-box">
+        <h2>Register</h2>
+        <form onSubmit={handleRegister}>
+          <label>Username</label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button type="submit">Register</button>
+        </form>
+        {message && <p>{message}</p>}
+      </div>
+    </div>
+  );
 
 }
 
