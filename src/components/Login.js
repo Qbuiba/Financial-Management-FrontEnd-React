@@ -28,18 +28,22 @@ function Login({onLogin}){
         <div className="auth-box">
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
-            <label>Username</label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <label>Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <label>
+                Username
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+            </label>
+            <label>
+                Password
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+            </label>
             <button type="submit">Login</button>
           </form>
           {message && <p className="error-message">{message}</p>}
