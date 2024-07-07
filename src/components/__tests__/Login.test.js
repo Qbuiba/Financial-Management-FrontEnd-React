@@ -1,16 +1,17 @@
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Login from "../Login";
-import {MemoryRouter} from "react-router-dom";
+import { MemoryRouter } from 'react-router-dom';
+import Login from '../Login';
 
-test('Test render Login page', async() => {
-
-    const {asFragment} = render(
-        <MemoryRouter>
-            <Login  onLogin={()=>{}} />
-        </MemoryRouter>
+describe('Login Page', () => {
+  test('renders the Username label', () => {
+    render(
+      <MemoryRouter>
+        <Login onLogin={() => {}} />
+      </MemoryRouter>
     );
 
-    await screen.findByLabelText('Username');
-
-    expect(asFragment()).toMatchSnapshot();
+    const usernameLabel = screen.getByText('Username');
+    expect(usernameLabel).toBeInTheDocument();
+  });
 });

@@ -29,21 +29,21 @@ function Login({onLogin}){
           <h2>Login</h2>
           <form onSubmit={handleLogin}>
             <label>
-                Username
-                <input
+                Username                
+            </label>
+            <input
                   type="text"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
-            </label>
             <label>
                 Password
-                <input
+            </label>
+            <input
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
-            </label>
             <button type="submit">Login</button>
           </form>
           {message && <p className="error-message">{message}</p>}

@@ -1,5 +1,101 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Login Page matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="auth-container"
+  >
+    <div
+      class="auth-box"
+    >
+      <h2>
+        Login
+      </h2>
+      <form>
+        <label>
+          Username
+          <input
+            type="text"
+            value=""
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            value=""
+          />
+        </label>
+        <button
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+      <p
+        class="info-message"
+      >
+        If you don't have an account, 
+        <a
+          href="/register"
+        >
+          register here
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Login Page renders Login page correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="auth-container"
+  >
+    <div
+      class="auth-box"
+    >
+      <h2>
+        Login
+      </h2>
+      <form>
+        <label>
+          Username
+          <input
+            type="text"
+            value=""
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            value=""
+          />
+        </label>
+        <button
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+      <p
+        class="info-message"
+      >
+        If you don't have an account, 
+        <a
+          href="/register"
+        >
+          register here
+        </a>
+        .
+      </p>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`Test render Login page 1`] = `
 <DocumentFragment>
   <div
